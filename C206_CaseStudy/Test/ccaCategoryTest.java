@@ -10,8 +10,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import c206_Assignment.Categories;
-import c206_Assignment.ccaCategory;
 
 /**
  * @author 21036115
