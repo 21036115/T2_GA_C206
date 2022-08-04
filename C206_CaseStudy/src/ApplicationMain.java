@@ -67,14 +67,14 @@ public class ApplicationMain {
 	}
 	
 	
-	private static void mainMenu() {
+	public static void mainMenu() {
 		System.out.println("LOGIN PAGE");
 		Helper.line(50, "=");
 		System.out.println("1. Login as Parent");
 		System.out.println("2. Login as staff");
 		Helper.line(50, "=");
 	}
-	private static void staffMenu() {
+	public static void staffMenu() {
 		Helper.line(50, "=");
 		System.out.println("1. View applicants");
 		System.out.println("2. Add Student to CCA");
@@ -82,7 +82,7 @@ public class ApplicationMain {
 		Helper.line(50, "=");
 	}
 	
-	private static void loginThing() {
+	public static void loginThing() {
 		Helper.line(50, "=");
 		System.out.println("1. Login");
 		System.out.println("2. Quit");

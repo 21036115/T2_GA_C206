@@ -1,4 +1,3 @@
-package Use;
 
 import java.util.ArrayList;
 
@@ -18,11 +17,11 @@ public class MainMenu {
 		parentArr.add(new Parent(21004567, "Jesika", 5 ,"Accountability 4","Mr Luis", "Diaz", "diaz@email.com", 84444444, 4444));
 		parentArr.add(new Parent(21007890, "Aidill", 4 ,"Responsibility 6","Mr Pablo", "Escobar", "escobar@email.com", 85555555, 5555));
 
-		ccaArr.add(new ccaClass("BaseketBall","Sports", "3pm to 6pm", "Every Friday", "BasketBall Court", "Mr Tan"));
-		ccaArr.add(new ccaClass("Ballet","Performing Arts", "3pm to 6pm", "Every Wednesday", "Dance Studio", "Mrs Chan"));
-		ccaArr.add(new ccaClass("Arts&Craft","Design", "3pm to 6pm", "Every Friday", "Design Studio", "Mdm Stella"));
-		ccaArr.add(new ccaClass("Boys Bridgade","Unifromed Groups", "3pm to 6pm", "Every Friday", "BB Room", "Mr Goh"));
-		ccaArr.add(new ccaClass("Band","Perfomaning Arts", "3pm to 6pm", "Every Thursday", "Music Room", "Mr Tei & Mrs Ting"));
+		ccaArr.add(new ccaClass("BaseketBall","Sports", 3, 6, "Every Friday", "BasketBall Court", "Mr Tan"));
+		ccaArr.add(new ccaClass("Ballet","Performing Arts", 3, 6, "Every Wednesday", "Dance Studio", "Mrs Chan"));
+		ccaArr.add(new ccaClass("Arts&Craft","Design", 3, 6, "Every Friday", "Design Studio", "Mdm Stella"));
+		ccaArr.add(new ccaClass("Boys Bridgade","Unifromed Groups", 3, 6, "Every Friday", "BB Room", "Mr Goh"));
+		ccaArr.add(new ccaClass("Band","Perfomaning Arts", 3, 6, "Every Thursday", "Music Room", "Mr Tei & Mrs Ting"));
 		
 		CategoriesList.add(new Categories("Sport Clubs"));
 		CategoriesList.add(new Categories("Uniformed Groups"));
@@ -78,26 +77,26 @@ public class MainMenu {
 				menu();
 				option = Helper.readInt("Choose an Option > ");
 				if(option == 1) {
-					C206_MainCodes studentCode = new C206_MainCodes();
+					C206_StudentCodes studentCode = new C206_StudentCodes();
 
 					while (studentOption != 4) {
 
-						C206_MainCodes.menu();
+						C206_StudentCodes.menu();
 						studentOption = Helper.readInt("Enter an Option > ");
 
 						if (studentOption == 1) {
 							// Add a new student
 							Student st = studentCode.inputStudent();
-							C206_MainCodes.addStudent(studentArr, st);
+							C206_StudentCodes.addStudent(studentArr, st);
 							System.out.println("Student added");
 
 						} else if (studentOption == 2) {
 							// View all students
-							C206_MainCodes.viewStudent(studentArr);
+							C206_StudentCodes.viewStudent(studentArr);
 
 						} else if (studentOption == 3) {
 							Student st = studentCode.inputremoveStudent(studentArr);
-							C206_MainCodes.deleteStudent(studentArr, st);
+							C206_StudentCodes.deleteStudent(studentArr, st);
 							System.out.println("Student removed");
 
 
@@ -132,10 +131,7 @@ public class MainMenu {
 							}
 						} else if (ccaOption == 2) {
 							// View all students
-							String output = String.format("%-10s %-15s %-15s %-15s %-10s %-10s", "Name", "Detail", 
-									"CCA Time", "CCA Day", "Venue", "Teacher-In-Charge");
-							output += ccaCode.viewAllCCA(ccaArr);
-							System.out.println(output);
+							ccaCode.viewAllCCA(ccaArr);
 
 						} else if (ccaOption == 3) {
 							ccaClass del = ccaCode.deleteCCA(ccaArr);
@@ -151,7 +147,7 @@ public class MainMenu {
 				}
 
 				else if(option == 3) {
-					ccaRegistration categoriesCode = new ccaRegistration();
+					ccaCategory categoriesCode = new ccaCategory();
 
 					while(cateOption!= 4) {
 						categoriesCode.Menu();
