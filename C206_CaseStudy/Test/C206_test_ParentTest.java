@@ -63,7 +63,7 @@ public class C206_test_ParentTest {
 	@Test
 	public void retrieveParentTest() {
 		
-		// Test if Student list is not null but empty, so that can add a new item
+		//Test if Student list is not null but empty, so that can add a new item
 		assertNotNull("Test if there is valid Student arraylist to add to", parentArr);
 		//test if the list of Students retrieved from the SourceCentre is empty
 		String checkParent = C206_ParentCodes.retrieveParent(parentArr);

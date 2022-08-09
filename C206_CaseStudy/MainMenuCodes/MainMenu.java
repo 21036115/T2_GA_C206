@@ -17,17 +17,23 @@ public class MainMenu {
 		parentArr.add(new Parent(21004567, "Jesika", 5 ,"Accountability 4","Mr Luis", "Diaz", "diaz@email.com", 84444444, 4444));
 		parentArr.add(new Parent(21007890, "Aidill", 4 ,"Responsibility 6","Mr Pablo", "Escobar", "escobar@email.com", 85555555, 5555));
 
+		studentArr.add(new Student(21001234, "Eddie", 6 ,"Innovation 7","Mr Peter", "Parker", "peterparker@email.com", 81111111));
+		studentArr.add(new Student(21002345, "Shaun", 1 ,"Respect 3","Mr Jaden", "Smith", "jadensmith@email.com", 82222222));
+		studentArr.add(new Student(21003456, "Coby", 1 ,"Respect 5","Mr Pablo", "Emilio", "pabloemilio@email.com", 83333333));
+		studentArr.add(new Student(21004567, "Jesika", 5 ,"Accountability 4","Mr Luis", "Diaz", "luisdiaz@email.com", 84444444));
+		studentArr.add(new Student(21007890, "Aidill", 4 ,"Responsibility 6","Mr Pablo", "Escobar", "pabloescobar@email.com", 85555555));
+
 		ccaArr.add(new ccaClass("BaseketBall","Sports", 3, 6, "Every Friday", "BasketBall Court", "Mr Tan"));
 		ccaArr.add(new ccaClass("Ballet","Performing Arts", 3, 6, "Every Wednesday", "Dance Studio", "Mrs Chan"));
 		ccaArr.add(new ccaClass("Arts&Craft","Design", 3, 6, "Every Friday", "Design Studio", "Mdm Stella"));
 		ccaArr.add(new ccaClass("Boys Bridgade","Unifromed Groups", 3, 6, "Every Friday", "BB Room", "Mr Goh"));
 		ccaArr.add(new ccaClass("Band","Perfomaning Arts", 3, 6, "Every Thursday", "Music Room", "Mr Tei & Mrs Ting"));
-		
+
 		CategoriesList.add(new Categories("Sport Clubs"));
 		CategoriesList.add(new Categories("Uniformed Groups"));
 		CategoriesList.add(new Categories("Design"));
 		CategoriesList.add(new Categories("Performing Arts"));
-		
+
 		appList.add(new Application(21001234, 4321, "BasketBall"));
 
 		int option = 0;
@@ -40,6 +46,7 @@ public class MainMenu {
 		int appOption = 0;
 		int staffOp = 0;
 		int counter = 0;
+		int counter2 = 0;
 
 		// LOGIN
 
@@ -47,6 +54,8 @@ public class MainMenu {
 		ApplicationMain appCode = new ApplicationMain();
 
 		while (appOption != 4) {
+			counter = 0;
+			counter2 = 0;
 			appCode.mainMenu();
 			appOption = Helper.readInt("Enter option > ");
 			if (appOption == 1) {
@@ -59,6 +68,9 @@ public class MainMenu {
 						counter = 2;
 						break;
 					}
+					else {
+						System.out.println("No Account Found");
+					}
 				}
 			}
 			else if (appOption == 2) {
@@ -67,6 +79,33 @@ public class MainMenu {
 				if (checkUserName && checkIfPassword) {
 					counter = 1;
 					break;
+				}
+			}
+			else if (appOption == 3) {
+				appCode.loginThing();
+				int loginOp = Helper.readInt("Enter option > ");
+				if (loginOp == 1) {
+					int sID = Helper.readInt("Enter your Student ID > ");
+					int grade = Helper.readInt("Enter Grade > ");
+					if(grade < 4) {
+						counter2 = 0;
+					}
+					else {
+						counter2++;
+					}
+					if(counter2 != 0) {
+						int parContact = Helper.readInt("Enter Parent Contact Number >");
+						if(appCode.loginStudent(sID, parContact, grade, studentArr) == true) {
+							counter = 2;
+							break;
+						}
+						else {
+							System.out.println("No Account Found");
+						}
+					}
+					else {
+						System.out.println("Please Use Your Parents Account To Login");
+					}
 				}
 			}
 		}
